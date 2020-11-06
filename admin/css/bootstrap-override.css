@@ -1,0 +1,79 @@
+.nonactive {
+   pointer-events: none;
+   cursor: default;
+}
+
+.addnew, .edituser {
+  display: none;
+}
+
+/* *********************************************** */
+
+#clock {
+  position: absolute;
+  left: 50%;
+  width: 120px;
+  height: 120px;
+  background: rgba(0, 0, 0, 0.6);
+  margin-left: -60px;
+  margin-top: 20%;
+  /*border: 10px solid #fff;*/
+  -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+  z-index: 100000; }
+
+/* Hands */
+#clock span.hand {
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  -webkit-animation: rotate 10s infinite linear;
+  -webkit-transform-origin: left bottom;
+  -moz-animation: rotate 10s infinite linear;
+  -moz-transform-origin: left bottom;
+  -ms-animation: rotate 10s infinite linear;
+  -ms-transform-origin: left bottom;
+  -o-animation: rotate 10s infinite linear;
+  -o-transform-origin: left bottom;
+  animation: rotate 10s infinite linear;
+  transform-origin: left bottom; }
+
+#clock span.hand.second {
+  height: 50px;
+  width: 2px;
+  margin-left: -1px;
+  top: 10px; }
+
+@-webkit-keyframes rotate {
+  0% {
+    -webkit-transform: rotate(0deg); }
+
+  100% {
+    -webkit-transform: rotate(360deg); } }
+@-moz-keyframes rotate {
+  0% {
+    -moz-transform: rotate(0deg); }
+
+  100% {
+    -moz-transform: rotate(360deg); } }
+@-ms-keyframes rotate {
+  0% {
+    -ms-transform: rotate(0deg); }
+
+  100% {
+    -ms-transform: rotate(360deg); } }
+@-o-keyframes rotate {
+  0% {
+    -o-transform: rotate(0deg); }
+
+  100% {
+    -o-transform: rotate(360deg); } }
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg); }
+
+  100% {
+    transform: rotate(360deg); } }
+
+/* *********************************************** */

@@ -1,0 +1,16 @@
+$base-font-size:2vmin;
+$base-line-height:1.5em;
+$link: #477dca;
+$grey: tint(black, 50%);
+$grey2: #4A4A4A;
+$max-width: em(1400);
+
+$quarter-pearl-lusta: #FFFBF1;
+$fuscous-gray: #52544D;
+
+//$mobile:new-breakpoint(max-width 768px 4);
+.krailler-font{
+  font-family: "tondo",sans-serif;
+  font-style: normal;
+  font-weight: 400;
+}

@@ -1,0 +1,234 @@
+
+
+/* ===== Initializr Styles ==================================================
+   Author: Jonathan Verrecchia - verekia.com/initializr/responsive-template
+   ========================================================================== */
+
+
+.wrapper {
+  width: 80%;
+  margin: 0 10%; }
+
+/* Make the body 100% of the browser viewport height */
+html, body {
+  height: 100%;
+  margin: 0; }
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+/* =Header */
+.header-container {
+  text-align: center;
+  color: #ffffff;
+  .wrapper {
+    padding-top: 120px;
+    z-index: 2;
+    position: relative; }
+ }
+
+.bcg {
+  background: no-repeat center center;
+  background-size: cover;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  opacity: 0.5; }
+
+
+
+  #contact-us .bcg {
+      background: url('/img/about-bg5.jpg') no-repeat center center;
+      background-size: cover;
+      opacity: 0.9;
+  }
+
+$odd-query:"<tablet","landscape";
+
+  #credits{
+  		background-color: shade($fuscous-gray,70%);
+  		height:120vh;
+      @include media($odd-query...){
+        height:300vh;
+      }
+      @include media("<phone") {
+        height:200vh;
+      }
+  		display: none;
+     .bcg {
+        background: url('/img/credits-bg.jpg') no-repeat center center;
+        background-size: cover;
+        opacity: .2;
+      }
+  }
+
+
+
+
+
+/* =Navigation */
+#nav-dot-wrapper{
+  display: none;
+	@include media(">phone"){
+    display: block;
+    position:fixed;
+    right:2em;
+    bottom:2em;
+    z-index:9999;
+    ul{
+      color:rgba(white,.5);
+    }
+  }
+}
+.active{
+  color:white
+}
+
+
+/* =Main */
+
+
+.fs {
+  height: 100vh; }
+
+.slide {
+  color: #ffffff;
+  position: relative;
+  .wrapper{
+    padding-top: 30px;
+    position: relative;
+    z-index: 2;
+  }
+
+  @include media(">desktop"){
+        overflow: hidden;
+        section {
+            //max-width: 50em
+        }
+        overflow-x: hidden;
+        .wrapper {
+            padding-top: 120px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            @include transform(translate(-50%, -50%));
+            text-align: left;
+            width: 100%;
+            margin: 0;
+        }
+        &#about-us{
+
+            .wrapper {
+                top: 20%;
+
+            }
+            section {
+                //margin: 0 auto;
+            }
+        }
+
+
+  }
+
+}
+
+
+/*Content specific*/
+
+/*About*/
+#about1{
+  opacity:0;
+}
+#about-img-2{
+  display:none;
+    @include media(">phone"){
+      display: block;
+      opacity:0;
+    }
+}
+
+
+/* =Content Block */
+.content-block {
+  background-color: #212121;
+  color: rgba(255, 255, 255, 0.9); }
+  .content-block .wrapper {
+    padding: 30px 0;
+    text-align: center; }
+  .no-touch .content-block .wrapper {
+    visibility: hidden;
+    opacity: 0; }
+  .no-touch .content-block.is-active .wrapper {
+    visibility: visible;
+    opacity: 1;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0); }
+
+/* =Footer */
+.footer-container {
+  text-align: center;
+
+  color: rgba(255, 255, 255, 0.5);
+  background-color: #06060d; }
+  .footer-container h3 {
+    margin: 0;
+    padding: 20px 0;
+    font-weight: normal; }
+  .footer-container a {
+    color: rgba(255, 255, 255, 0.5); }
+
+  /* =Simple animation up */
+  .slideInUp {
+      .no-touch & {
+          visibility: hidden;
+          opacity: 0;
+          transition: all 0.7s ease-out;
+
+          -webkit-transform: translate3d(0, 50px, 0);
+          transform: translate3d(0, 50px, 0);
+      }
+      .no-touch .is-active & {
+          visibility: visible;
+          opacity: 1;
+          -webkit-transform: translate3d(0, 0, 0);
+          transform: translate3d(0, 0, 0);
+      }
+      &.slideInUp2{transition-delay: 0.2s;}
+      &.slideInUp3{transition-delay: 0.4s;}
+  }
+
+
+#iht_logo {
+  width: 100px;
+  margin-bottom: 30px; }
+
+/* ==========================================================================
+   Media Queries
+   ========================================================================== */
+@media only screen and (min-width: 768px) {
+
+  /* =Header */
+  .header-container {
+    overflow: hidden;
+    position: relative; }
+    .header-container .wrapper {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -120%);
+          -ms-transform: translate(-50%, -120%);
+              transform: translate(-50%, -120%);
+      margin: 0;
+      padding: 0; }
+    .header-container:before {
+      font-size: 70em; }
+  .scroll-hint {
+    font-size: 20px; }
+  .bcg {
+    opacity: 1; }
+
+  nav {
+    display: block; }
+  .content-block .wrapper {
+    padding: 120px 0; } }

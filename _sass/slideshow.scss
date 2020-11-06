@@ -1,0 +1,187 @@
+@font-face {
+    font-family: 'entypo';
+    src: url('../fonts/controls/entypo.eot');
+    src: url('../fonts/controls/entypo.eot?#iefix') format('embedded-opentype'), url('../fonts/controls/entypo.woff') format('woff'), url('../fonts/controls/entypo.ttf') format('truetype'), url('../fonts/controls/entypo.svg#entypo') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.krailler-slideshow {
+    list-style: none;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+    margin: 0;
+    padding: 0;
+}
+
+.krailler-slideshow li {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    //@include transition(all 3s ease-in-out);
+}
+
+
+/* If background-size supported we'll add the images to the background of the li */
+
+.backgroundsize .krailler-slideshow li {
+    @include prefix(background-size,
+    contain);
+    background-position: center center;
+    background-repeat: no-repeat;
+    @include prefix(background-size,
+    contain);
+    @include media(">phone") {
+        @include prefix(background-size,
+        cover);
+    }
+}
+
+.backgroundsize .krailler-slideshow li.repeat {
+    @include prefix(background-size,
+    contain);
+    background-repeat: no-repeat;
+    @include prefix(background-size,
+    50%);
+    @include media(">phone") {
+        background-repeat: repeat;
+    }
+}
+
+
+/* ...and hide the images */
+
+.backgroundsize .krailler-slideshow li img {
+    //display: none;
+}
+
+.backgroundsize .krailler-slideshow li .img-wrapper {
+    width: 100vw;
+    height: 100vh;
+    picture {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        img {
+            object-fit: contain;
+            @include media(">phone") {
+                object-fit: cover;
+            }
+        }
+    }
+}
+
+.krailler-slideshow li img {
+    display: block;
+    width: 100%;
+}
+
+.krailler-controls {
+    //position: fixed;
+    width: 100%;
+    height: 100%;
+}
+
+.krailler-controls span {
+    float: left;
+    position: relative;
+    cursor: pointer;
+}
+
+.krailler-controls span:before {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    text-align: center;
+    font-family: 'entypo';
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 100px;
+    font-size: 80px;
+    color: #fff;
+    -webkit-font-smoothing: antialiased;
+    opacity: 0
+}
+
+.btn-hover:hover span:before {
+    opacity: 1;
+}
+
+.krailler-controls span:active:before {}
+
+span.krailler-play:before {
+    content: "\e002";
+}
+
+span.krailler-next:before {
+    //content: "\e000";
+}
+
+span.krailler-prev:before {
+    //content: "\e001";
+}
+
+.krailler-controls {
+    .btn-container-prev {
+        display: none;
+        height: 100vh;
+        width: 30%;
+        &:hover {
+            span.krailler-prev {
+                display: block;
+            }
+        }
+    }
+    .btn-container-next {
+        display: none;
+        height: 100vh;
+        width: 30%;
+        right: 0;
+        padding: 1em;
+        position: absolute;
+        top: 0;
+        &:hover {
+            span.krailler-next {
+                display: block;
+            }
+        }
+    }
+    span.krailler-prev {
+        display: none;
+        position: absolute;
+        top: 46%;
+        margin: 2em;
+        @include transform(translateY(-50%) rotate(-45deg));
+    }
+    span.krailler-next {
+        display: none;
+        position: absolute;
+        top: 46%;
+        margin: 2em;
+        @include transform(translateY(-50%) rotate(45deg));
+    }
+}
+
+
+/* Fallback */
+
+.no-js.no-backgroundsize .krailler-slideshow li:first-child {
+    opacity: 0.5;
+}
+
+.no-js.backgroundsize .krailler-slideshow li:first-child img {
+    display: block;
+}

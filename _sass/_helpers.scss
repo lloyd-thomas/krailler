@@ -1,0 +1,233 @@
+//vender mixin
+
+@mixin prefix($property, $value, $vendors: webkit moz ms o) {
+      @if $vendors {
+        @each $vendor in $vendors {
+          #{"-" + $vendor + "-" + $property}: #{$value};
+        }
+      }
+      #{$property}: #{$value};
+}
+
+
+.auto-col-2{
+  li.block{
+    @include span-columns(6);
+    @include omega(2n);
+  }
+}
+
+.auto-col-3{
+  li.block{
+  @include span-columns(4);
+  @include omega(3n);
+  }
+}
+
+.auto-col-4{
+  li.block{
+  @include span-columns(3);
+  @include omega(4n);
+  }
+}
+
+li.block{
+  @include media("<phone"){
+    width:100% !important;
+  }
+}
+@for $i from 1 through 12{
+  .span-col-#{$i}{
+    @include span-columns($i) ;
+    @include media("<tablet") {
+      @include span-columns(12);
+    }
+  }
+
+}
+@for $i from 0 through 8{
+   /*margin */
+  .mt-#{$i}{
+    margin-top:#{$i*1}em;
+   }
+   .mb-#{$i}{
+    margin-bottom:#{$i*1}em;
+   }
+   .ml-#{$i}{
+    margin-left:#{$i}em;
+   }
+   .mr-#{$i}{
+    margin-right:#{$i}em;
+   }
+   .mar-#{$i}{
+     margin:#{$i*1}em;
+   }
+    /*padding */
+  .pt-#{$i}{
+    padding-top:#{$i*1}em;
+   }
+  .pl-#{$i}{
+    padding-left:#{$i}em;
+   }
+   .pr-#{$i}{
+    padding-right:#{$i}em;
+   }
+   .pb-#{$i}{
+    padding-bottom:#{$i*1}em;
+   }
+   .pad-#{$i}{
+    padding:#{$i*1}em;
+   }
+
+}
+
+
+.two-col{
+  width:100%;
+  @include media(">phone") {
+      width:50%;
+      float:left;
+  }
+}
+.float-right{
+  float:none;
+  @include media(">phone") {
+      float:right;
+    }
+}
+.float-left{
+    float:none;
+    @include media(">phone") {
+        float:left;
+      }
+}
+
+
+.center-me{
+  position:absolute;
+  top:50%;
+  left:50%;
+  @include transform(translate(-50%, -50%));
+  text-align: center;
+}
+
+
+.line-arrow {
+    position: absolute;
+    overflow: hidden;
+    display: inline-block;
+    width: 2em;
+	  height: 2em;
+    margin-top: -1em;
+    top: 50%;
+}
+
+.line-arrow.left {
+    border-top: 2px solid white;
+	  border-left: 2px solid white;
+    transform: rotate(-54deg) skew(-20deg);
+    left: 20px;
+}
+
+.line-arrow.right {
+  	border-top: 2px solid white;
+	  border-right: 2px solid white;
+    transform: rotate(54deg) skew(20deg);
+    right: 20px;
+}
+
+.line-arrow.bottom {
+  	border-top: 2px solid white;
+	  border-right: 2px solid white;
+}
+
+.line-arrow:active,
+.line-arrow.active {
+    border-width: 2px;
+}
+
+.square {
+  top: auto;
+  bottom: 10px;
+}
+
+.square.left {
+  @include transform(rotate(-45deg));
+}
+
+.square.right {
+  @include transform(rotate(45deg));
+}
+
+.square.bottom {
+  @include transform(rotate(135deg));
+}
+
+.show-pointer:hover{
+  cursor:pointer;
+}
+
+@include keyframes(blink) {
+    /**
+     * At the start of the animation the dot
+     * has an opacity of .2
+     */
+    0% {
+      opacity: .2;
+    }
+    /**
+     * At 20% the dot is fully visible and
+     * then fades out slowly
+     */
+    20% {
+      opacity: 1;
+    }
+    /**
+     * Until it reaches an opacity of .2 and
+     * the animation can start again
+     */
+    100% {
+      opacity: .2;
+    }
+}
+
+.loading span {
+    /**
+     * Use the blink animation, which is defined above
+     */
+    @include animation-name(blink);
+    /**
+     * The animation should take 1.4 seconds
+     */
+    @include animation-duration(1.4s);
+    /**
+     * It will repeat itself forever
+     */
+    @include animation-iteration-count(infinite);
+    /**
+     * This makes sure that the starting style (opacity: .2)
+     * of the animation is applied before the animation starts.
+     * Otherwise we would see a short flash or would have
+     * to set the default styling of the dots to the same
+     * as the animation. Same applies for the ending styles.
+     */
+    @include animation-fill-mode(both);
+}
+
+.loading span:nth-child(2) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .2s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .2s;
+}
+
+.loading span:nth-child(3) {
+    /**
+     * Starts the animation of the third dot
+     * with a delay of .4s, otherwise all dots
+     * would animate at the same time
+     */
+    animation-delay: .4s;
+}
